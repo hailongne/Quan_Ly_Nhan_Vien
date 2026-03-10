@@ -1,0 +1,80 @@
+.staff-card{background:#fff;border:1px solid #e6f0ff;border-radius:16px;box-shadow:0 6px 18px rgba(2,6,23,0.06);overflow:hidden}
+.staff-table{width:100%;min-width:760px;border-collapse:collapse;font-size:14px}
+.staff-thead{background:linear-gradient(90deg,#e6f6ff,#dbeafe);color:#0f172a;text-transform:uppercase;font-size:12px}
+.staff-th{padding:12px;text-align:left;font-weight:700;color:#0f172a}
+.staff-td{padding:12px;vertical-align:middle;color:#0f172a}
+.staff-row{border-top:1px solid #eef6ff;background:#fff}
+.staff-row:hover{background:#f0f9ff}
+.staff-empty{padding:24px;text-align:center;color:#64748b}
+.staff-actions{display:flex;justify-content:center;gap:10px;align-items:center}
+.staff-btn{position:relative;padding:8px 12px;border-radius:10px;border:1px solid transparent;background:transparent;cursor:pointer;font-size:13px;transition:all 120ms ease}
+.staff-btn:hover{transform:translateY(-1px)}
+
+/* tooltip on top-right of the button */
+.staff-btn[data-tooltip]::after{
+	content: attr(data-tooltip);
+	position: absolute;
+	top: 0;
+	right: 100%;
+	transform: translate(8px,-100%);
+	white-space: nowrap;
+	background: rgba(15,23,42,0.95);
+	color: #fff;
+	padding: 6px 8px;
+	border-radius: 6px;
+	font-size: 12px;
+	z-index: 40;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 120ms ease;
+}
+.staff-btn[data-tooltip]:hover::after{ opacity: 1 }
+.staff-btn[data-tooltip]::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 100%;
+	transform: translate(6px,-8px);
+	width: 0;height: 0;border-left:6px solid rgba(15,23,42,0.95);border-top:6px solid transparent;border-bottom:6px solid transparent;opacity:0;transition:opacity 120ms ease;z-index:39
+}
+.staff-btn[data-tooltip]:hover::before{ opacity: 1 }
+.staff-badge{display:inline-flex;padding:6px 10px;border-radius:999px;font-weight:600;font-size:12px}
+.staff-status-active{background:#e6f7ff;color:#0369a1}
+.staff-status-inactive{background:#f1f5f9;color:#64748b}
+.staff-status-probation{background:#fff7ed;color:#f97316}
+.staff-status-default{background:#eff6ff;color:#0ea5e9}
+.table-add{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;border:none;color:#fff;background:linear-gradient(90deg,#1e3a8a,#3b82f6);box-shadow:0 6px 18px rgba(59,130,246,0.18);font-weight:600}
+
+/* button variants */
+.staff-btn--view{background:#eef2ff;color:#1e3a8a;border:1px solid transparent;border-radius:8px}
+.staff-btn--edit{background:#fff;border:1px solid #bfdbfe;color:#1d4ed8;border-radius:8px}
+.staff-btn--delete{background:#fff7f7;border:1px solid #fecaca;color:#dc2626;border-radius:8px}
+.staff-btn--cv{background:#f8fafc;border:1px solid rgba(15,23,42,0.06);color:#0f172a;border-radius:8px}
+
+/* icon-only buttons: no bg, no border, colored icon only */
+.staff-icon{background:transparent;border:none;padding:8px;display:inline-flex;align-items:center;justify-content:center;font-size:20px;line-height:1;color:inherit}
+.staff-icon svg{display:block;width:20px;height:20px}
+.staff-icon--view{color:#2563eb}
+.staff-icon--edit{color:#0ea5e9}
+.staff-icon--delete{color:#ef4444}
+.staff-icon:disabled{opacity:0.4}
+
+/* modal styles for AddStaffModal */
+.modal-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:flex;align-items:center;justify-content:center;z-index:60}
+.modal-card{background:#fff;border-radius:12px;max-width:1000px;width:100%;box-shadow:0 20px 40px rgba(2,6,23,0.2)}
+.modal-card input,.modal-card select{width:100%;padding:8px;border-radius:8px;border:1px solid #e6eefc;background:#fff}
+.modal-card h3{font-size:16px}
+
+/* Hover / interaction effects */
+.table-add{transition:transform 160ms ease, box-shadow 160ms ease}
+.table-add:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(59,130,246,0.22)}
+
+.staff-btn--view,.staff-btn--edit,.staff-btn--cv{transition:transform 120ms ease, box-shadow 120ms ease}
+.staff-btn--view:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,99,235,0.12)}
+.staff-btn--edit:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(14,165,233,0.10)}
+.staff-btn--cv:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+
+.staff-icon{transition:transform 120ms ease, filter 120ms ease, color 120ms ease}
+.staff-icon:hover{transform:scale(1.12);filter:drop-shadow(0 6px 12px rgba(2,6,23,0.08))}
+.staff-icon:active{transform:scale(0.98)}
+

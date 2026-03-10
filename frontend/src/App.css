@@ -1,0 +1,9 @@
+/* App-level defaults to keep visuals consistent */
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
+}

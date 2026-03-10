@@ -1,0 +1,60 @@
+/* Global base styles to unify the app backdrop */
+:root {
+	background: #ffffff;
+	color: #0f172a;
+}
+
+* {
+	box-sizing: border-box;
+    
+}
+
+body {
+	margin: 0;
+	background: #ffffff;
+	color: #0f172a;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	line-height: 1.5;
+}
+
+#root {
+	min-height: 100vh;
+	background: #ffffff;
+}
+
+/* Global subtle scrollbar styling (WebKit browsers + Firefox) */
+* {
+	/* Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: rgba(15,23,42,0.18) transparent;
+}
+
+/* WebKit browsers */
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: rgba(15,23,42,0.12);
+	border-radius: 10px;
+	border: 2px solid transparent;
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: rgba(15,23,42,0.22);
+}
+
+*::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+/* Slightly larger on hover for accessibility */
+*:hover::-webkit-scrollbar-thumb {
+	background: rgba(15,23,42,0.18);
+}

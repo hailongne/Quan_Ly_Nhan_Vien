@@ -1,0 +1,49 @@
+.handover-preview-header {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 16px 18px;
+  background: linear-gradient(110deg, #0f6ea3 0%, #1180bb 58%, #0b69c7 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 110, 163, 0.2);
+}
+
+.handover-preview-header::before {
+  content: '';
+  position: absolute;
+  top: -52px;
+  right: -40px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+}
+
+.handover-preview-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.handover-preview-title {
+  position: relative;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+}
+
+.handover-preview-subtitle {
+  position: relative;
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+}

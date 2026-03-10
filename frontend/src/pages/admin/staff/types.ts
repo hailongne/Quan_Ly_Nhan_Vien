@@ -1,0 +1,26 @@
+export type ApiUser = {
+	id: number;
+	user_id?: number;
+	name?: string;
+	email?: string;
+	password?: string;
+	username?: string;
+	phone?: string;
+	department_id?: number | string;
+	department?: string;
+	department_position?: string;
+	address?: string;
+	date_joined?: string;
+	employment_status?: string;
+	official_confirmed_at?: string;
+	remaining_leave_days?: number;
+	work_shift_start?: string;
+	work_shift_end?: string;
+	note?: string;
+	role?: string;
+	created_at?: string;
+	updated_at?: string;
+	avatar_url?: string;
+	cv_url?: string;
+	status?: string;
+};
