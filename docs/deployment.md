@@ -24,15 +24,20 @@ npm run preview
 
 #### Frontend
 1. Connect repository với Vercel/Netlify
-2. Set build command: `npm run build`
-3. Set publish directory: `dist`
-4. Thêm environment variables:
-   - `VITE_API_URL`: URL của backend API
+2. Với cấu trúc repo hiện tại (frontend nằm trong `frontend/`), ưu tiên dùng `vercel.json` ở root repo để build tự động đúng thư mục.
+3. Nếu cấu hình thủ công trên Vercel thì:
+   - Root Directory: `.`
+   - Build command: `cd frontend && npm run build`
+   - Output directory: `frontend/dist`
+4. Thêm environment variables cho frontend:
+   - `VITE_API_URL`: origin của backend API production (ví dụ: `https://your-backend-domain.com`), không thêm `/api` ở cuối.
 
 #### Backend
 Deploy lên Render, Railway, hoặc VPS với:
 - Start command: `npm start`
 - Environment variables từ file `.env`
+- Bắt buộc thêm `CORS_ORIGINS` chứa domain frontend production (có thể nhiều domain, ngăn cách bằng dấu phẩy)
+   - Ví dụ: `CORS_ORIGINS=https://your-frontend.vercel.app,https://www.your-domain.com`
 
 ### Option B: Docker Deployment
 

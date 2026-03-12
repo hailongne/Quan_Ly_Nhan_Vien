@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { login as apiLogin, getMe } from '../api/auth';
-import axiosInstance, { setAuthToken } from '../api/axios';
+import axiosInstance, { resolveApiUrl, setAuthToken } from '../api/axios';
 import { notify } from '../utils/notify';
 
 const readStoredExpiry = (key: string) => {
@@ -34,9 +34,9 @@ async function validateTokenSilently(): Promise<boolean> {
   try {
     const stored = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (!stored) return false;
-    const res = await fetch('/api/users/me', {
-      headers: { Authorization: `Bearer ${stored}`, 'Content-Type': 'application/json' },
-      credentials: 'same-origin',
+    const res = await fetch(resolveApiUrl('/api/users/me'), {
+      headers: { Authorization: `Bearer ${stored}` },
+      credentials: 'include',
     });
     return res.ok;
   } catch (_) {

@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+const configuredApiOrigin = (import.meta.env.VITE_API_URL || '').trim().replace(/\/+$/, '');
+
+export function resolveApiUrl(path: string) {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  if (!configuredApiOrigin) return normalizedPath;
+  return `${configuredApiOrigin}${normalizedPath}`;
+}
+
 const instance = axios.create({
-  baseURL: '/',
+  baseURL: configuredApiOrigin ? `${configuredApiOrigin}/` : '/',
   headers: { 'Content-Type': 'application/json' }
 });
 
