@@ -38,6 +38,7 @@ export default function Sidebar({ activeKey }: { activeKey?: string }) {
   return (
     <aside style={{ width: 240, background: 'linear-gradient(180deg,#1f7ef6,#2366d9)', color: '#fff', padding: 18, boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 18, overflow: 'visible' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingLeft: 6 }}>
+        <img src="/image/logofreetrip.png" alt="logo" style={{ width: 42, height: 42, objectFit: 'contain' }} />
         <div style={{ fontWeight: 800, fontSize: 46 }}>
             <span style={{ color: '#ffffff' }}>Free</span>
             <span style={{ color: '#ff7a00' }}>trip</span>
