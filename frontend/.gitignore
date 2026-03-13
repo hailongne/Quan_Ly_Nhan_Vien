@@ -7,4 +7,5 @@ yarn-error.log
 dist/
 build/
 .vite/
+public/
 *.log
