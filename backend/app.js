@@ -28,12 +28,14 @@ let notificationRoutes = null;
 let profileUpdateRoutes = null;
 let departmentRoutes = null;
 let adminRoutes = null;
+let individualTaskRoutes = null;
 
 try { userRoutes = require('./routes/userRoutes'); } catch (e) { userRoutes = null; }
 // profileUpdateRoutes removed per request; do not require or mount it
 profileUpdateRoutes = null;
 try { departmentRoutes = require('./routes/departmentRoutes'); } catch (e) { departmentRoutes = null; }
 try { adminRoutes = require('./routes/adminRoutes'); } catch (e) { adminRoutes = null; }
+try { individualTaskRoutes = require('./routes/individualTaskRoutes'); } catch (e) { individualTaskRoutes = null; }
 // assignmentRoutes removed (production-chains feature deleted)
 let assignmentRoutes = null;
 
@@ -107,6 +109,8 @@ if (notificationRoutes) app.use('/api/notifications', notificationRoutes);
 if (departmentRoutes) app.use('/api/departments', departmentRoutes);
 // Admin management
 if (adminRoutes) app.use('/api/admins', adminRoutes);
+// Individual task assignment
+if (individualTaskRoutes) app.use('/api/individual-tasks', individualTaskRoutes);
 // KPI routes (mounted at /api/kpis)
 if (kpiRoutes) app.use('/api/kpis', kpiRoutes);
 

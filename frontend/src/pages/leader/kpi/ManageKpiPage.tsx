@@ -6,7 +6,17 @@ import ManageStaffKpi from './ManageStaffKpi';
 import { useAuth } from '../../../contexts/AuthContext';
 import LeaderPublishPanel from './LeaderPublishPanel';
 
-export default function ManageKpiPage() {
+type ManageKpiPageProps = {
+  defaultTab?: 'details' | 'publish' | 'staff';
+  activeMenuKey?: string;
+  roleLabel?: string;
+};
+
+export default function ManageKpiPage({
+  defaultTab = 'details',
+  activeMenuKey = 'kpi_manage',
+  roleLabel = 'Quản lý KPI'
+}: ManageKpiPageProps) {
   const { user, signout } = useAuth();
   const displayName = (user as any)?.name || (user as any)?.email || '';
   const onSignOut = () => { signout(); };
@@ -15,7 +25,7 @@ export default function ManageKpiPage() {
       const saved = localStorage.getItem('manageKpiTab');
       if (saved === 'details' || saved === 'publish' || saved === 'staff') return saved as any;
     } catch (e) {}
-    return 'details';
+    return defaultTab;
   });
 
   const setTabAndPersist = (newTab: 'details' | 'publish' | 'staff') => {
@@ -37,8 +47,17 @@ export default function ManageKpiPage() {
     return () => window.removeEventListener('assignKpi', onAssign as EventListener);
   }, []);
 
+  useEffect(() => {
+    if (defaultTab === 'details' || defaultTab === 'publish' || defaultTab === 'staff') {
+      setTab(defaultTab);
+      try {
+        localStorage.setItem('manageKpiTab', defaultTab);
+      } catch (e) {}
+    }
+  }, [defaultTab]);
+
   return (
-    <DashboardLayout roleLabel="Quản lý KPI" userName={displayName} activeMenuKey="kpi_manage" onSignOut={onSignOut}>
+    <DashboardLayout roleLabel={roleLabel} userName={displayName} activeMenuKey={activeMenuKey} onSignOut={onSignOut}>
       <div style={{ padding: 20 }}>
         <div style={{ background: '#ffffff', padding: '6px 8px', borderRadius: 8, position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid #e2e8f0' }}>
           <div role="tablist" aria-label="KPI tabs" style={{ display: 'flex', gap: 12, alignItems: 'center' }}>

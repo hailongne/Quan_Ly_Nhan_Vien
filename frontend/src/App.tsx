@@ -15,6 +15,8 @@ import KpiPage from './pages/admin/kpi/KpiPage';
 import KpiDetails from './pages/admin/kpi/KpiDetails';
 import KpiPublish from './pages/admin/kpi/KpiPublish';
 import ManageKpiPage from './pages/leader/kpi/ManageKpiPage';
+import AssignStaffRouter from './pages/assign/AssignStaffRouter';
+import DailyRouter from './pages/daily/DailyRouter';
 import TransferredManageKpiPage from './pages/leader/kpi/transferred/TransferredManageKpiPage';
 import HandoverKpiPage from './pages/leader/kpi/handover/HandoverKpiPage';
 import HandoverTransferPreviewPage from './pages/leader/kpi/handover/HandoverTransferPreviewPage';
@@ -35,6 +37,8 @@ function RoleHome() {
 	return <Navigate to="/login" replace />;
 }
 
+// AssignStaffRouter moved to separate file
+
 export default function App() {
 	const { user, signout } = useAuth();
 	const displayName = (user as any)?.name || (user as any)?.username || 'User';
@@ -43,13 +47,29 @@ export default function App() {
 			<Routes>
 			<Route path="/login" element={<RedirectIfAuthed><Login /></RedirectIfAuthed>} />
 			<Route path="/forgot-password" element={<ForgotPassword />} />
-			<Route path="/reset-password" element={<ResetPassword />} />
+			<Route
+				path="/reset-password"
+				element={(
+					<RoleProtectedRoute allowedRoles={[ 'admin', 'leader', 'user' ]}>
+						<ResetPassword />
+					</RoleProtectedRoute>
+				)}
+			/>
 
 			<Route
 				path="/admin"
 				element={(
 					<RoleProtectedRoute allowedRoles={[ 'admin' ]}>
 						<AdminDashboard />
+					</RoleProtectedRoute>
+				)}
+			/>
+
+			<Route
+				path="/daily"
+				element={(
+					<RoleProtectedRoute allowedRoles={[ 'admin', 'leader', 'user' ]}>
+						<DailyRouter />
 					</RoleProtectedRoute>
 				)}
 			/>
@@ -81,6 +101,15 @@ export default function App() {
 					element={(
 						<RoleProtectedRoute allowedRoles={[ 'leader' ]}>
 							<ManageKpiPage />
+						</RoleProtectedRoute>
+					)}
+				/>
+
+				<Route
+					path="/kpi/assign-staff"
+					element={(
+						<RoleProtectedRoute allowedRoles={[ 'admin', 'leader', 'user' ]}>
+							<AssignStaffRouter />
 						</RoleProtectedRoute>
 					)}
 				/>
